@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+  div {
+    border: 1px solid black;
+    padding: 5px;
+    width: 400px;
+    margin: 0 auto;
+}
+
+    div h1 {
+        text-align: center;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+section {
+    border: 1px solid green;
+    padding: 5px;
+}
+
+input[type=text] {
+    margin-top:10px;
+    margin-bottom:10px;
+    padding: 3px;
+    width: 150px;
+    height: 20px;
+}
+
+div.listItem {
+    border-bottom: 1px solid black;
+    border-top:0;
+    border-left:0;
+    border-right:0;
+    padding: 5px;
+    width: auto;
+}
+input[type=checkbox]{
+    height:15px;
+    width:15px;
+}
+h3{
+    margin-top:0px;
+    margin-bottom:0px;
+    text-align:center;
+}
+</style>
+<body>
+    <div id="wrapper">
+        <h1>TODO List</h1>
+        <input type="text" id="sectionText" class="sectionText" placeholder="Title" />
+        <button id="btn" class="btn">New title</button>
+    </div>
+</body>
+<script type="text/javascript">
+  var a = document.getElementById('btn');
+    a.addEventListener('click', function () {
+    var section = document.createElement('section');
+    section.setAttribute('id', 1);
+    document.getElementById('wrapper').appendChild(section);
+    var h3 = document.createElement('h3');
+    h3.innerText = document.getElementById('sectionText').value;
+    section.appendChild(h3);
+    var input = document.createElement('INPUT');
+    input.setAttribute('type', 'text')
+    section.appendChild(input);
+    var btn = document.createElement('button');
+    btn.innerText = 'New List Content'
+    section.appendChild(btn);
+
+    btn.addEventListener('click', function () {
+        var div = document.createElement('div');
+        div.setAttribute('class', 'listItem');
+        var checkbox = document.createElement('INPUT');
+        checkbox.setAttribute('type', 'checkbox');
+        checkbox.setAttribute('id', 'checker');
+        div.appendChild(checkbox);
+        var span = document.createElement('span')
+        span.innerText = this.previousElementSibling.value;
+        div.appendChild(span);
+        input.parentNode.insertBefore(div, input);
+    }, false);
+})
+</script>
+</html>
